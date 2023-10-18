@@ -2,6 +2,9 @@
 title: "HW-5"
 output:
   html_document: default
+format:
+  html:
+    code-fold: true
 Jupyter: python3
 ---
 ```{python}
