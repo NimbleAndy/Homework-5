@@ -1,0 +1,60 @@
+---
+title: "HW-5"
+---
+
+```{python}
+## Quarto
+# Part 1
+data_part1 = [82, 66, 70, 59, 90, 78, 76, 95, 99, 84, 88, 76, 82, 81, 91, 64, 79, 76, 85, 90]
+
+# Mean
+mean_part1 = sum(data_part1) / len(data_part1)
+
+# Median
+sorted_data_part1 = sorted(data_part1)
+n = len(sorted_data_part1)
+median_part1 = (sorted_data_part1[n // 2] + sorted_data_part1[(n - 1) // 2]) / 2
+
+# Mode
+from collections import Counter
+counter = Counter(data_part1)
+mode_part1 = [k for k, v in counter.items() if v == max(counter.values())]
+
+# Interquartile Range
+q1 = sorted_data_part1[n // 4]
+q3 = sorted_data_part1[(3 * n) // 4]
+iqr = q3 - q1
+
+# Part 2
+data_part2 = [10, 15, 5, 12, 20]
+
+# Variance
+variance_part2 = sum((x - mean_part1) ** 2 for x in data_part2) / len(data_part2)
+
+# Linear Regression
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+x_values = np.array([0, 1, 2, 3, 4]).reshape(-1, 1)
+y_values = np.array([2, 3, 5, 4, 6]).reshape(-1, 1)
+
+model = LinearRegression().fit(x_values, y_values)
+slope = model.coef_[0][0]
+intercept = model.intercept_
+
+# Mean Absolute Error
+predicted_values = [slope * x + intercept for x in range(5)]
+mae = sum(abs(y - pred) for y, pred in zip(y_values, predicted_values)) / len(y_values)
+
+# Print the results
+print("Part 1:")
+print(f"Mean: {mean_part1}")
+print(f"Median: {median_part1}")
+print(f"Mode: {mode_part1}")
+print(f"Interquartile Range: {iqr}")
+
+print("Part 2:")
+print(f"Variance: {variance_part2}")
+print(f"Linear Regression Equation: y = {slope}x + {intercept}")
+print(f"Mean Absolute Error: {mae}")
+```
